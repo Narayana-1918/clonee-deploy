@@ -1,0 +1,1 @@
+web: gunicorn clonee.wsgi --log-file -

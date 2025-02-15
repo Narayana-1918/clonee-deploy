@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+  <!-- Container for the images -->
+<div class="container">
+  <!-- Row to hold the images -->
+  <div class="row">
+    <!-- Loop through the images and create a column for each -->
+    {% for i in data %}
+       <div class="image-container">
+      <div class="col-md-4">
+        <!-- Image with title -->
+          <img src="{{ i.restaurant_image.url  }}" alt="{{ i.restaurant_image.url  }}" class="img-fluid rounded">
+          <h5>{{ i.restaurant_name }}</h5><br>
+          <p>{{ i.restaurant_description }}</p><br>
+          <center><a data-mdb-ripple-init class="btn btn-outline-success btn-lg" href="{% url 'menu_list' i.restaurant_id %}" role="button"
+                >Order Now</a></center>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+{% endblock %}

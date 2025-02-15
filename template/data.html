@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+  
+{% block content %}
+    <div class="container">
+      <!-- Row to hold the images -->
+      <div class="row">
+        <!-- Loop through the images and create a column for each -->
+        {% for i in filter %}
+          <div class="col-md-4">
+            <!-- Image with title -->
+            <div class="image-container">
+              <img src="{{ i.restaurant_image.url  }}" alt="{{ i.restaurant_image.url  }}" class="img-fluid rounded">
+              <h5>{{ i.restaurant_name }}</h5><br>
+              <p>{{ i.restaurant_description }}</p><br>
+              <center><a data-mdb-ripple-init class="btn btn-outline-success btn-lg" href="{% url 'menu_list' i.restaurant_id %}" role="button"
+                    >Order Now</a></center>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+{% endblock %}

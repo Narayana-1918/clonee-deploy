@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOME PAGE</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <style>
+      #yellow{
+        background-color:rgb(250, 186, 67);
+      }
+    </style>
+</head>
+<body>
+   
+      
+  {% block content %}
+    <header> 
+      
+        <!-- Background image -->
+        <div
+          class="p-5 text-center bg-image"
+          style="
+            background-image: url('https://upvey.com/wp-content/uploads/2020/06/system-design-food-app.jpg');
+            height: 400px;
+            margin-top: 58px;
+          "
+        >
+          <div class="mask" style="background-color: rgba(0, 0, 0, 0.01);">
+            <div class="d-flex justify-content-center align-items-center h-100">
+              <div class="text-grey">
+                <br><br>
+                <h1 class="mb-3">Welcome to Clonee</h1>
+                <h4 class="mb-3">Find your Taste and experience it</h4>
+                <a data-mdb-ripple-init class="btn btn-outline-dark btn-lg" href="{% url 'hotel_list'  %}" role="button"
+                >Order Now</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Background image -->
+      </header>
+      <!---about us page -->>
+      <section class="py-5" id="about">
+        <div class="container">
+          <div class="row gx-4 align-items-center">
+            <div class="col-md-6">
+              <div class="me-md-2 me-lg-5"><img class="img-fluid rounded-3" src="https://www.hindustantimes.com/rf/image_size_960x540/HT/p2/2018/08/06/Pictures/restaurant-holding-mobile-background-business-concept-onine_877a206e-9955-11e8-8838-278d266b5e3b.jpg"></div>
+            </div>
+            <div class="col-md-6">
+              <div class="ms-md-2 ms-lg-5 mt-5 mt-md-0">
+                <span class="text-muted">Our Story</span>
+                <h2 class="display-5 fw-bold">About Us</h2>
+                <p class="lead">Welcome to clonee,where your culinary journey begins! We're passionate about cnnecting you with the finest flavours and most delectable dishes from around the globe.Wheather you're craving local favourites or international cuisins,our App brings the best of the food world right to your doorstep.</p>
+                <h3 class="display-5 fw-bold">Our Mission</h3>
+                <p class="lead">At Tomato ,our mission is simple:to provide an unparralled food experience that satisfying yoyr taste buds and brings joy to your meal.We beleive in quality convenience,and community,ensuring that very bite your take is a step towards culinary bliss.</p><a class="btn btn-primary" href="#">Learn more</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- contact us page-->
+      <section class="py-5" id="contact">
+        <div class="position-relative py-5">
+          <div class="position-absolute"><img alt="" class="img-fluid" src="https://freefrontend.dev/assets/map-img-4.png"></div>
+          <div class="position-relative">
+            <div class="container">
+              <div class="row justify-content-end">
+                <div class="col-lg-6">
+                  <div class="bg-white p-5 rounded shadow mt-5">
+                    <h2 class="display-6 fw-bold text-center mb-4">Contact Us</h2>
+                    <form>
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="mb-3">
+                            <input class="form-control bg-light" placeholder="Your name" type="text">
+                          </div>
+                        </div>
+                        <div class="col-md-12">
+                          <div class="mb-3">
+                            <input class="form-control bg-light" placeholder="Your email" type="text">
+                          </div>
+                        </div>
+                        <div class="col-md-12">
+                          <div class="mb-3">
+                            <textarea class="form-control bg-light" placeholder="Your message" rows="4"></textarea>
+                          </div>
+                        </div>
+                        <div class="col-md-5">
+                          <div class="d-grid">
+                            <button class="btn btn-primary" type="submit">Send message</button>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+{% endblock %}
+     
+</body>
+</html>

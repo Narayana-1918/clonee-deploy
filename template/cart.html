@@ -1,0 +1,152 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+   
+</head>
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+    
+}
+
+.cart-container {
+    width: 80%;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.cart-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.cart-table th, .cart-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+.cart-table th {
+    background-color: #f2f2f2;
+}
+
+.total-price {
+    text-align: right;
+    margin-top: 20px;
+}
+
+.order-now {
+    display: block;
+    width: 200px;
+    margin: 0 auto;
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.order-now:hover {
+    background-color: #218838;
+    text-decoration: none;
+}
+td{
+    height: 150px;
+    width: 90%;
+}
+#a{
+    height: 150px;
+    width: 30%;
+}
+#a2{
+    display: flex;
+}
+
+</style>
+<body>
+  <nav class="navbar fixed-top navbar-expand-lg " id="yellow" data-bs-theme="blue">
+      
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item text">
+          <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#about">about</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="#contact">contact us</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link " href="{% url 'user_profile' %}">profile</a>
+          </li>
+        <li class="nav-item">
+          <a class="nav-link " href="{% url 'view_cart' %}">Cart</a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0" action="{% url 'menu_search' %}" method="get">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" name="r">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </div>
+  </nav>
+    <div class="cart-container">
+        <h1>Your Cart</h1>
+        <table class="cart-table">
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in cart_items %}
+                <tr>
+                    <td><img src="{{ item.menu.item_image.url }}" alt="" id="a"></td>
+                    <td>{{ item.menu.item_name }}</td>
+                    <td>{{ item.menu.item_price }}</td>
+                    <td>{{ item.quantity }}</td>
+                    <td><a href="{% url 'add_to_cart' item.id %} role="button"> add item</a></td>
+                    <td><a href="{% url 'remove_from_cart' item.id %}" role="button"> remove item</a></td>
+                    <td><a href="{% url 'delete_item' item.id %}" role="button"> delete item</a></td>
+                    
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="total-price">
+            <h3>Total: {{ total_price }}</h3>
+        </div id='a2'>
+       <a href="{% url 'create_order' %}"> <button class="order-now"  >Order Now</button> </a>
+        <!-- <button class="order-now">back</button> -->
+    </div>
+</body>
+</html>
